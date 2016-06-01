@@ -44,8 +44,6 @@ public:
 	void reset();
 	void onAudioParameterChanged(AudioParameter* parameter);
 
-	bool isHRIRLoaded() const;
-
 	AudioParameter* getCrossoverFrequencyParameter() const;
 	AudioParameter* getWetParameter() const;
 	AudioParameter* getGainParameter() const;
@@ -75,7 +73,6 @@ private:
 	
 	bool crossfading_;
 	bool bypassed_;
-	bool hrirLoaded_;
 
 	AudioParameter* crossoverFreq_;
 	AudioParameter* wetPercent_;

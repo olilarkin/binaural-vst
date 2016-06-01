@@ -23,18 +23,7 @@ HrtfBiAuralAudioProcessor::HrtfBiAuralAudioProcessor()
 	// initialize crossover
 	onAudioParameterChanged(crossoverFreq_);
 
-	// load HRIR
-	auto thisDir = File::getSpecialLocation(File::currentExecutableFile).getParentDirectory();
-	try
-	{
-		hrtfContainer_.loadHrir(thisDir.getFullPathName() + "/hrir/kemar.bin");
-		hrirLoaded_ = true;
-	}
-	catch (std::ios_base::failure&)
-	{
-		hrirLoaded_ = false;
-		bypassed_ = true;
-	}
+	hrtfContainer_.loadHrir();
 	hrtfContainer_.updateHRIR(0, 0);
 
 
@@ -238,11 +227,6 @@ void HrtfBiAuralAudioProcessor::onAudioParameterChanged(AudioParameter* paramete
 {
 	if (parameter == crossoverFreq_)
 		crossover_.set(crossover_.fs, parameter->value());
-}
-
-bool HrtfBiAuralAudioProcessor::isHRIRLoaded() const
-{
-	return hrirLoaded_;
 }
 
 AudioParameter* HrtfBiAuralAudioProcessor::getCrossoverFrequencyParameter() const

@@ -64,10 +64,6 @@ HrtfBiAuralAudioProcessorEditor::HrtfBiAuralAudioProcessorEditor(HrtfBiAuralAudi
 	bypassButton_.setClickingTogglesState(true);
 	bypassButton_.addListener(this);
 	addAndMakeVisible(bypassButton_);
-
-	// if hrir could not be loaded, disable any clicking on the component
-	if (!p.isHRIRLoaded())
-		setInterceptsMouseClicks(false, false);
 }
 
 HrtfBiAuralAudioProcessorEditor::~HrtfBiAuralAudioProcessorEditor()
@@ -79,21 +75,6 @@ void HrtfBiAuralAudioProcessorEditor::paint(Graphics& g)
 	g.setColour(bgColor_);
 	g.fillAll();
 	drawBordersAndLabels(g);
-}
-
-void HrtfBiAuralAudioProcessorEditor::paintOverChildren(Graphics& g)
-{
-	if (!processor_.isHRIRLoaded())
-	{
-		FillType fill;
-		fill.setColour(Colours::black);
-		fill.setOpacity(0.7f);
-		g.setFillType(fill);
-		g.fillRect(getBounds());
-		g.setColour(Colours::whitesmoke);
-		g.setFont(40);
-		g.drawFittedText("HRIR not loaded\nPlugin disabled", getBounds(), Justification::centred, 2);
-	}
 }
 
 void HrtfBiAuralAudioProcessorEditor::drawBordersAndLabels(Graphics& g)

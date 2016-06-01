@@ -18,7 +18,6 @@ public:
 
 public: // Component implementation
 	void paint(Graphics& g) override;
-	void paintOverChildren(Graphics& g) override;
 	void resized() override;
 
 public: // Slider::Listener implementation
