@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2013
+Project("{A40983D2-9FD5-540B-D032-70F4CDE8799C}") = "binaural-vst", "binaural-vst.vcxproj", "{2BF300FD-F35F-A9A2-A608-87BE43D27571}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BF300FD-F35F-A9A2-A608-87BE43D27571}.Debug|x64.ActiveCfg = Debug|x64
+		{2BF300FD-F35F-A9A2-A608-87BE43D27571}.Debug|x64.Build.0 = Debug|x64
+		{2BF300FD-F35F-A9A2-A608-87BE43D27571}.Release|x64.ActiveCfg = Release|x64
+		{2BF300FD-F35F-A9A2-A608-87BE43D27571}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

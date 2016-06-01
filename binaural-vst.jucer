@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="pRKSbb" name="binaural-vst" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.TWoz.binauralvst" includeBinaryInAppConfig="1"
+              buildVST="1" buildVST3="0" buildAU="0" buildRTAS="0" buildAAX="0"
+              pluginName="BinAuralVST" pluginDesc="BinAuralVST" pluginManufacturer="TWoz"
+              pluginManufacturerCode="TWoz" pluginCode="BiAu" pluginChannelConfigs="{2,2}"
+              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
+              pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
+              pluginAUExportPrefix="HrtfBiAuralAU" pluginRTASCategory="" aaxIdentifier="com.yourcompany.HrtfBiAural"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="4.2.1"
+              pluginIsMidiEffectPlugin="0" buildAUv3="0" defines="REDUCED ANSI_DECLARATORS TRILIBRARY CDT_ONLY">
+  <MAINGROUP id="ThT6AB" name="binaural-vst">
+    <GROUP id="{3F0CF3E0-1962-B297-4604-0DCAA2D58DA7}" name="Resources">
+      <FILE id="Cvy2Ni" name="kemar.bin" compile="0" resource="1" file="Resources/kemar.bin"/>
+    </GROUP>
+    <GROUP id="{8F3A5A67-1D3C-FF1C-D714-76B43EE12B9B}" name="Triangle++">
+      <FILE id="wyo3p0" name="assert.cpp" compile="1" resource="0" file="Source/triangle++/src/assert.cpp"/>
+      <FILE id="JGt58w" name="assert.hpp" compile="0" resource="0" file="Source/triangle++/include/assert.hpp"/>
+      <FILE id="hIE8rF" name="del_impl.cpp" compile="1" resource="0" file="Source/triangle++/src/del_impl.cpp"/>
+      <FILE id="aOGxXw" name="del_interface.hpp" compile="0" resource="0"
+            file="Source/triangle++/include/del_interface.hpp"/>
+      <FILE id="qq8czM" name="dpoint.hpp" compile="0" resource="0" file="Source/triangle++/include/dpoint.hpp"/>
+      <FILE id="RERssy" name="triangle.h" compile="0" resource="0" file="Source/triangle++/include/triangle.h"/>
+      <FILE id="sgMWgz" name="triangle_impl.hpp" compile="0" resource="0"
+            file="Source/triangle++/include/triangle_impl.hpp"/>
+    </GROUP>
+    <GROUP id="{9C07D047-001D-170C-0B9C-6934407D6CCA}" name="images">
+      <FILE id="H1qYBz" name="head_side.h" compile="0" resource="0" file="Source/images/head_side.h"/>
+      <FILE id="kQ0M3m" name="head_top.h" compile="0" resource="0" file="Source/images/head_top.h"/>
+      <FILE id="t3M19l" name="source_icon.h" compile="0" resource="0" file="Source/images/source_icon.h"/>
+    </GROUP>
+    <FILE id="ytSorN" name="AudioParameter.cpp" compile="1" resource="0"
+          file="Source/AudioParameter.cpp"/>
+    <FILE id="ozGK1d" name="AudioParameter.h" compile="0" resource="0"
+          file="Source/AudioParameter.h"/>
+    <FILE id="fEykZV" name="FIRFilter.cpp" compile="1" resource="0" file="Source/FIRFilter.cpp"/>
+    <FILE id="wTAs4r" name="FIRFilter.h" compile="0" resource="0" file="Source/FIRFilter.h"/>
+    <FILE id="KvSALj" name="HRTFContainer.cpp" compile="1" resource="0"
+          file="Source/HRTFContainer.cpp"/>
+    <FILE id="lGmOpR" name="HRTFContainer.h" compile="0" resource="0" file="Source/HRTFContainer.h"/>
+    <FILE id="k7ATAd" name="MainDisplay.cpp" compile="1" resource="0" file="Source/MainDisplay.cpp"/>
+    <FILE id="SNIWQj" name="MainDisplay.h" compile="0" resource="0" file="Source/MainDisplay.h"/>
+    <FILE id="f1CPgW" name="OouraFFT.cpp" compile="1" resource="0" file="Source/OouraFFT.cpp"/>
+    <FILE id="hap9R8" name="OouraFFT.h" compile="0" resource="0" file="Source/OouraFFT.h"/>
+    <FILE id="iZQCKq" name="PluginEditor.cpp" compile="1" resource="0"
+          file="Source/PluginEditor.cpp"/>
+    <FILE id="kqxCOZ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    <FILE id="m3vtsz" name="PluginProcessor.cpp" compile="1" resource="0"
+          file="Source/PluginProcessor.cpp"/>
+    <FILE id="cLikC9" name="PluginProcessor.h" compile="0" resource="0"
+          file="Source/PluginProcessor.h"/>
+    <FILE id="R1LIW3" name="Util.h" compile="0" resource="0" file="Source/Util.h"/>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <VS2013 targetFolder="Builds/VisualStudio2013" externalLibraries="" vstFolder=""
+            vst3Folder="D:\Dev\Biblioteki\VST3 SDK">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="binaural-vst" libraryPath="../../../libs/lib/msvc12/triangle++/64/debug"
+                       headerPath="../../../libs/include/" postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;$(SolutionDir)\..\..\..\build\BinAural.dll&quot;"
+                       prebuildCommand="" useRuntimeLibDLL="1"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="3" targetName="binaural-vst" headerPath="../../../libs/include/"
+                       libraryPath="../../../libs/lib/msvc12/triangle++/64/release"
+                       postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;$(SolutionDir)\..\..\..\build\BinAural_x64.dll&quot;"
+                       useRuntimeLibDLL="0"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2013>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="binaural-vst"
+                       headerPath="../../Source/triangle++/include"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="binaural-vst"
+                       headerPath="../../Source/triangle++/include"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+  <LIVE_SETTINGS>
+    <WINDOWS/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>
