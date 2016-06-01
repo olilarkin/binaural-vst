@@ -24,10 +24,10 @@ void OouraFFT::fft(float* in, std::complex<float>* out)
 	// copy to output from the ooura format
 	for (size_t i = 0; i < nfft / 2; ++i)
 	{
-		out[i]._Val[0] = (float)buffer_[i * 2]; //real part
-		out[i]._Val[1] = (float)buffer_[i * 2 + 1]; // imag part
+		out[i].real((float)buffer_[i * 2]); //real part
+		out[i].imag((float)buffer_[i * 2 + 1]); // imag part
 	}
-	out[nfft / 2]._Val[0] = (float)buffer_[1]; // a[1] = R[n/2]
+	out[nfft / 2].real((float)buffer_[1]); // a[1] = R[n/2]
 }
 
 void OouraFFT::ifft(std::complex<float>* in, float* out)
@@ -37,10 +37,10 @@ void OouraFFT::ifft(std::complex<float>* in, float* out)
 	// copy to the ooura format
 	for (size_t i = 0; i < nfft / 2; ++i)
 	{
-		buffer_[i * 2] = in[i]._Val[0]; // real part
-		buffer_[i * 2 + 1] = in[i]._Val[1]; // imag part
+		buffer_[i * 2] = in[i].real(); // real part
+		buffer_[i * 2 + 1] = in[i].imag(); // imag part
 	}
-	buffer_[1] = in[nfft / 2]._Val[0]; // a[1] = R[n/2]
+	buffer_[1] = in[nfft / 2].real(); // a[1] = R[n/2]
 
 	// perform inverse DFT
 	rdft((int)nfft, -1, buffer_.data(), ip_.data(), sineTable_.data());
