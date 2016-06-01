@@ -1,6 +1,6 @@
 #pragma warning(push)
 #pragma warning(disable: 4244)
-#include <triangle++/del_interface.hpp>
+#include "triangle++/include/del_interface.hpp"
 #pragma warning(pop)
 
 #include "HRTFContainer.h"
@@ -72,39 +72,35 @@ const HrirBuffer& HRTFContainer::hrir() const
 	return hrir_;
 }
 
-void HRTFContainer::loadHrir(String filename)
+void HRTFContainer::loadHrir()
 {
-	FileInputStream istream(filename);
-	if (istream.openedOk())
-	{
-		std::vector<tpp::Delaunay::Point> points;
-		int azimuths[] = {-90, -80, -65, -55, -45, -40, -35, -30, -25, -20,
-			-15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 55, 65, 80, 90};
-		for (auto azm : azimuths)
-		{
+  MemoryInputStream istream(BinaryData::kemar_bin, BinaryData::kemar_binSize, false);
 
-			hrirDict_.insert(std::make_pair(azm, std::array<HrirBuffer, 52>()));
-			// -90 deg
-			istream.read(hrirDict_[azm][0][0].data(), 200 * sizeof(float));
-			istream.read(hrirDict_[azm][0][1].data(), 200 * sizeof(float));
-			points.push_back(tpp::Delaunay::Point(azm, -90));
-			// 50 elevations
-			for (int i = 1; i < 51; ++i)
-			{
-				istream.read(hrirDict_[azm][i][0].data(), 200 * sizeof(float));
-				istream.read(hrirDict_[azm][i][1].data(), 200 * sizeof(float));
-				points.push_back(tpp::Delaunay::Point(azm, -45 + 5.625 * (i - 1)));
-			}
-			// 270 deg
-			istream.read(hrirDict_[azm][51][0].data(), 200 * sizeof(float));
-			istream.read(hrirDict_[azm][51][1].data(), 200 * sizeof(float));
-			points.push_back(tpp::Delaunay::Point(azm, 270));
-		}
-		triangulation_ = new tpp::Delaunay(points);
-		triangulation_->Triangulate();
-	}
-	else
-		throw std::ios_base::failure("Failed to open HRIR file");
+  std::vector<tpp::Delaunay::Point> points;
+  int azimuths[] = {-90, -80, -65, -55, -45, -40, -35, -30, -25, -20,
+    -15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 55, 65, 80, 90};
+  for (auto azm : azimuths)
+  {
+
+    hrirDict_.insert(std::make_pair(azm, std::array<HrirBuffer, 52>()));
+    // -90 deg
+    istream.read(hrirDict_[azm][0][0].data(), 200 * sizeof(float));
+    istream.read(hrirDict_[azm][0][1].data(), 200 * sizeof(float));
+    points.push_back(tpp::Delaunay::Point(azm, -90));
+    // 50 elevations
+    for (int i = 1; i < 51; ++i)
+    {
+      istream.read(hrirDict_[azm][i][0].data(), 200 * sizeof(float));
+      istream.read(hrirDict_[azm][i][1].data(), 200 * sizeof(float));
+      points.push_back(tpp::Delaunay::Point(azm, -45 + 5.625 * (i - 1)));
+    }
+    // 270 deg
+    istream.read(hrirDict_[azm][51][0].data(), 200 * sizeof(float));
+    istream.read(hrirDict_[azm][51][1].data(), 200 * sizeof(float));
+    points.push_back(tpp::Delaunay::Point(azm, 270));
+  }
+  triangulation_ = new tpp::Delaunay(points);
+  triangulation_->Triangulate();
 }
 
 int HRTFContainer::getElvIndex(int elv)
