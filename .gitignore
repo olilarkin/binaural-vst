@@ -1,1 +1,4 @@
 Builds/MacOSX/build/*
+Builds/MacOSX/binaural-vst.xcodeproj/xcuserdata
+Builds/MacOSX/binaural-vst.xcodeproj/project.xcworkspace/xcuserdata
+Source/triangle++/.hg
